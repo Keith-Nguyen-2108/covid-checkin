@@ -1,30 +1,45 @@
 <template>
-  <nav>
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
-  </nav>
-  <router-view />
+  <component :is="layout"> <router-view /> </component>
 </template>
 
+<script>
+// import AppLayout from "@/layouts/AppLayout";
+import store from "./store";
+const defaultLayout = "default";
+export default {
+  name: "App",
+  computed: {
+    layout() {
+      // Sử dụng this.$route.meta.layout để kiểm tra xem trong route có khai báo meta tương ứng hay không?
+      // Nếu không có khai báo layout -> sẽ hiển thị layout default
+      return (this.$route.meta.layout || defaultLayout) + "-layout";
+    },
+  },
+  // mounted() {
+  //   // if back button is pressed
+  //   window.onpopstate = function (event) {
+  //     alert(
+  //       "location: " +
+  //         document.location +
+  //         ", state: " +
+  //         JSON.stringify(event.state)
+  //     );
+  //     store.commit("updateCompletedStep", -1);
+  //   };
+  // },
+  // components: {
+  //   AppLayout,
+  // },
+};
+</script>
 <style>
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-
-nav {
-  padding: 30px;
-}
-
-nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-nav a.router-link-exact-active {
-  color: #42b983;
+  overflow: hidden;
 }
 </style>

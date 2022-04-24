@@ -1,18 +1,28 @@
 <template>
   <div class="home">
-    <img alt="Vue logo" src="../assets/logo.png" />
-    <HelloWorld msg="Welcome to Your Vue.js App" />
+    <IntroScreen />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
-import HelloWorld from "@/components/HelloWorld.vue";
+import IntroScreen from "./IntroScreen.vue";
 
+// import { computed } from "vue";
 export default {
   name: "HomeView",
   components: {
-    HelloWorld,
+    IntroScreen,
   },
+
+  // created() {
+  //   console.log(this.$route.name);
+  // },
+  // setup() {
+  //   const routeName = computed(() => {
+  //     return useRoute().name;
+  //   });
+  //   return { routeName };
+  // },
 };
 </script>
