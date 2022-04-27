@@ -4,7 +4,7 @@
 
 <script>
 // import AppLayout from "@/layouts/AppLayout";
-import store from "./store";
+// import store from "./store";
 const defaultLayout = "default";
 export default {
   name: "App",

@@ -17,7 +17,7 @@
 
 <script>
 export default {
-  name: "Container",
+  name: "CustomContainer",
   props: ["msg", "array", "name", "id", "index"],
   data() {
     return {

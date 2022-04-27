@@ -5,7 +5,7 @@
       <span>{{ msg }}</span>
     </div>
     <div class="header__right-side">
-      <ProgressBar />
+      <progress-bar />
     </div>
   </div>
 </template>
@@ -14,7 +14,7 @@
 import ProgressBar from "./ProgressBar";
 
 export default {
-  name: "Header",
+  name: "HeaderBar",
   props: ["msg"],
   components: { ProgressBar },
   data() {
@@ -26,11 +26,6 @@ export default {
   created() {
     this.title = this.$route.name;
     // console.log(this.msg);
-  },
-  watch: {
-    "this.$store.state.completedSteps": () => {
-      console.log(this.$store.state.completedSteps);
-    },
   },
 };
 </script>

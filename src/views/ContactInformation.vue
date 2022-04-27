@@ -1,6 +1,6 @@
 <template>
   <div class="w-95">
-    <Header msg="Final Step" />
+    <header-bar msg="Final Step" />
     <div class="contact-infor">
       <p>Please fill in your contact details:</p>
       <div class="container">
@@ -54,7 +54,7 @@
       </div>
     </div>
     <hr style="border-block: 1px solid #f3f5f7" class="w-95" />
-    <Button
+    <custom-buttons
       type="submit"
       value="Submit"
       primaryButton="Submit"
@@ -66,13 +66,13 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
-import Button from "../components/Button.vue";
+import HeaderBar from "@/components/HeaderBar.vue";
+import CustomButtons from "../components/CustomButtons.vue";
 export default {
   name: "ContactInformation",
   components: {
-    Header,
-    Button,
+    HeaderBar,
+    CustomButtons,
   },
   data() {
     return {

@@ -24,7 +24,7 @@ const routes = [
     meta: {
       layout: "default",
     },
-    component: () => import("../views/Location.vue"),
+    component: () => import("../views/LocationScreen.vue"),
   },
   {
     path: "/office-guidelines",

@@ -1,6 +1,6 @@
 <template>
   <div class="w-95 office-guideline">
-    <Header msg="Next: Health Checklist" />
+    <header-bar msg="Next: Health Checklist" />
     <div style="text-align: center; margin-block: 50px">
       <p>Read and acknowledge the Office Guidelines</p>
       <a
@@ -11,7 +11,7 @@
         <img class="icon-pdf" src="../assets/iconPDF.png" alt="" />
       </a>
     </div>
-    <Button
+    <custom-buttons
       type="button"
       location="health-checklist"
       :disabled="disabled"
@@ -23,13 +23,13 @@
 </template>
 
 <script>
-import Header from "@/components/Header.vue";
-import Button from "../components/Button.vue";
+import HeaderBar from "@/components/HeaderBar.vue";
+import CustomButtons from "../components/CustomButtons.vue";
 export default {
   name: "OfficeGuidelines",
   components: {
-    Header,
-    Button,
+    HeaderBar,
+    CustomButtons,
   },
   data() {
     return {

@@ -11,7 +11,7 @@
 <script>
 import { mapState } from "vuex";
 export default {
-  name: "Navigation",
+  name: "TopNavigation",
   computed: {
     ...mapState(["country"]),
   },

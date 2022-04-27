@@ -15,20 +15,20 @@
       </div>
     </div>
 
-    <Container
+    <custom-container
       msg="Select the facility you are entering"
       :array="newCountries"
       name="city"
       @update="updateFacility"
     />
-    <Container
+    <custom-container
       msg="Select the status"
       :array="arrStatus"
       name="status"
       @update="updateStatus"
     />
     <hr style="border-block: 1px solid #f3f5f7" class="w-95" />
-    <Button
+    <custom-buttons
       type="button"
       location="office-guidelines"
       primaryButton="Next"
@@ -41,13 +41,13 @@
 
 <script>
 import { mapState } from "vuex";
-import Container from "../components/Container.vue";
-import Button from "../components/Button.vue";
+import CustomContainer from "@/components/CustomContainer.vue";
+import CustomButtons from "../components/CustomButtons.vue";
 export default {
-  name: "Location",
+  name: "LocationScreen",
   components: {
-    Container,
-    Button,
+    CustomContainer,
+    CustomButtons,
   },
   computed: {
     ...mapState(["countries"]),
@@ -82,9 +82,6 @@ export default {
     },
   },
   watch: {
-    "this.$store.state.country": () => {
-      console.log(this.$store.state.country);
-    },
     facility: {
       handler() {
         this.$store.state.facility = this.facility;

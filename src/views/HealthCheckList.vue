@@ -1,10 +1,10 @@
 <template>
   <div class="w-95">
-    <Header msg="Next: Personal Information" />
+    <header-bar msg="Next: Personal Information" />
     <div class="health-checklist">
       <p>Please answer follow questions below:</p>
       <div v-for="(item, index) in questions" :key="item.id">
-        <Container
+        <custom-container
           :array="answer"
           :id="item.id"
           :msg="item.desc"
@@ -15,7 +15,7 @@
       </div>
     </div>
     <hr style="border-block: 1px solid #f3f5f7" class="w-95" />
-    <Button
+    <custom-buttons
       location="personal-information"
       primaryButton="Next"
       type="button"
@@ -27,15 +27,15 @@
 </template>
 
 <script>
-import Container from "@/components/Container.vue";
-import Header from "@/components/Header.vue";
-import Button from "../components/Button.vue";
+import CustomContainer from "@/components/CustomContainer.vue";
+import HeaderBar from "@/components/HeaderBar.vue";
+import CustomButtons from "../components/CustomButtons.vue";
 export default {
   name: "HealthCheckList",
   components: {
-    Header,
-    Button,
-    Container,
+    HeaderBar,
+    CustomContainer,
+    CustomButtons,
   },
   data() {
     return {

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Navigation />
+    <top-navigation />
     <main>
       <slot />
     </main>
@@ -8,11 +8,11 @@
 </template>
 
 <script>
-import Navigation from "@/components/Navigation.vue";
+import TopNavigation from "@/components/TopNavigation.vue";
 export default {
   name: "DefaultLayout",
   components: {
-    Navigation,
+    TopNavigation,
   },
 };
 </script>

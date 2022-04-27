@@ -20,7 +20,7 @@
 
 <script>
 export default {
-  name: "Button",
+  name: "CustomButtons",
   props: [
     "location",
     "type",
