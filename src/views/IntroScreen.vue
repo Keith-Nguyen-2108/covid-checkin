@@ -17,14 +17,24 @@
         required to check-in on each visit to the premises.
       </p>
     </div>
-    <button
-      type="button"
-      class="btnStart btn btn-primary"
-      @click="goToAnotherPage()"
+    <div
+      style="
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        position: static;
+        inset: 0%;
+      "
     >
-      Get started
-    </button>
-    <span>Version 1.0.1</span>
+      <button
+        type="button"
+        class="btnStart btn btn-primary"
+        @click="goToAnotherPage()"
+      >
+        Get started
+      </button>
+      <span>Version 1.0.1</span>
+    </div>
   </div>
 </template>
 
@@ -66,23 +76,26 @@ export default {
 .big-logo {
   width: 100%;
   height: 100px;
+  margin-top: 40px;
   object-fit: contain;
 }
 
 .shield-image {
-  width: 200px;
-  margin-top: 20px;
-  height: 200px;
+  width: 192px;
+  margin-top: 16px;
+  height: 206px;
   object-fit: contain;
 }
 
 .content__intro h6 {
-  font-weight: bold;
-  font-size: 22px;
-  line-height: 28px;
   font-family: "Roboto";
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 28px;
   text-align: initial;
-  margin: 45px auto 12px;
+  margin: 45px auto 0px;
+  color: #272d35;
 }
 
 .content__intro p {
@@ -93,15 +106,21 @@ export default {
   line-height: 22px;
   text-align: initial;
   color: #5c6c7f;
+  margin-top: 12px;
+  margin-bottom: 27px;
 }
 
 .btn {
   border: none;
   outline: none;
   cursor: pointer;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  font-size: 18px;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .btn-primary {
@@ -115,7 +134,7 @@ export default {
 }
 
 .btnStart {
-  width: 95%;
+  width: 100%;
 }
 
 .intro__screen span {
@@ -127,16 +146,24 @@ export default {
   color: #afb9c5;
   margin-top: 8px;
   margin-bottom: 8px;
-  text-align: center;
+
+  display: inline-block;
 }
 
 @media screen and (max-width: 550px) {
   .w-95 {
-    width: 95%;
+    width: auto;
+    margin-left: 16px;
+    margin-right: 16px;
   }
   .navbar,
   .container {
     width: 100%;
+  }
+
+  .big-logo {
+    width: 170px;
+    height: 59px;
   }
 }
 </style>

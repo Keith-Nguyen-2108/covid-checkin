@@ -40,6 +40,6 @@ body {
 }
 
 #app {
-  overflow: hidden;
+  overflow-x: hidden;
 }
 </style>

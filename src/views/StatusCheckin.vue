@@ -26,6 +26,8 @@
 </template>
 
 <script>
+import failedImg from "../assets/failed.png";
+import successImg from "../assets/success.png";
 export default {
   name: "StatusCheckin",
   computed: {
@@ -41,13 +43,13 @@ export default {
         {
           id: 1,
           title: "Check-In Successful!",
-          img: "http://localhost:8080/img/success.175d2fff.png",
+          img: successImg,
           desc: "Thank you for completing. You can now safely enter the office. Please be sure to check-in on each office visit. Have a great day!",
         },
         {
           id: 2,
           title: "Check-In Failed!",
-          img: "http://localhost:8080/img/failed.9d2734da.png",
+          img: failedImg,
           desc: "To prevent the possible spread of COVID and ensure the safety of you and your colleagues, you’re not eligible to enter our Silicon Stack site at this time. ",
         },
       ],
