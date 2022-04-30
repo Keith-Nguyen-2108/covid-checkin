@@ -42,4 +42,11 @@ body {
 #app {
   overflow-x: hidden;
 }
+
+a,
+a:focus,
+a:hover {
+  color: initial;
+  text-decoration: none;
+}
 </style>

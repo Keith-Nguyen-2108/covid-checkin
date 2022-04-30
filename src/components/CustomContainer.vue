@@ -1,13 +1,14 @@
 <template>
   <div class="container">
     <p :class="{ 'fw-b': id }" style="margin-bottom: 1rem">{{ title }}:</p>
-    <div v-for="i in this.array" :key="i.id">
+    <div v-for="(i, index) in this.array" :key="i.id">
       <input
         type="radio"
         :id="i.name + name"
         :value="i.value ? i.value : i.name"
         :name="name"
-        @click="(e) => onClickButton(e.target.value, index)"
+        :checked="index === defaultChecked"
+        @click="(e) => onClickButton(e.target.value, id - 1)"
       />
       <label :for="i.name + name">{{ i.name }}</label
       ><br />
@@ -18,7 +19,7 @@
 <script>
 export default {
   name: "CustomContainer",
-  props: ["msg", "array", "name", "id", "index"],
+  props: ["msg", "array", "name", "id", "index", "defaultChecked"],
   data() {
     return {
       title: "",
@@ -26,6 +27,10 @@ export default {
   },
   mounted() {
     this.title = this.id > 0 ? `${this.id}.${this.msg}` : this.msg;
+    // this.onClickButton(
+    //   this.array[0]?.value ? this.array[0]?.value : this.array[0]?.name,
+    //   0
+    // );
   },
   methods: {
     onClickButton(value, index) {

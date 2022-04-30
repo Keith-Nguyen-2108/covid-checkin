@@ -1,59 +1,69 @@
 <template>
-  <div class="w-95">
-    <header-bar msg="Final Step" />
-    <div class="contact-infor">
-      <p>Please fill in your contact details:</p>
-      <div class="container">
-        <form id="frmContact">
-          <div>
-            <label>First Name</label>
-            <input
-              type="text"
-              placeholder="Enter first name"
-              v-model="formValue.firstName"
-            />
-          </div>
-          <div>
-            <label>Last Name</label>
-            <input
-              type="text"
-              placeholder="Enter last name"
-              v-model="formValue.lastName"
-            />
-          </div>
-          <div>
-            <label>Contect number</label>
-            <div class="phone__container">
-              <select v-model="formValue.selected">
-                <option disabled value="">Select one</option>
-
-                <option v-for="country in countriesCode" :key="country.id">
-                  {{ country.code }}
-                </option>
-              </select>
+  <div>
+    <div class="w-95">
+      <header-bar msg="Final Step" />
+      <div class="contact-infor">
+        <p>Please fill in your contact details:</p>
+        <div class="container">
+          <form id="frmContact">
+            <div>
+              <label>First Name</label>
               <input
                 type="text"
-                placeholder="Enter phone number"
-                v-model="formValue.phoneNumber"
+                placeholder="Enter first name"
+                v-model="formValue.firstName"
               />
+              <span class="text-warn">{{ errors.firstName }}</span>
             </div>
-          </div>
-          <div class="confirm__container">
-            <input
-              type="checkbox"
-              id="chkbxConfirm"
-              v-model="formValue.confirm"
-            />
-            <p>
-              I confirm that the above information is accurate and I have read
-              and understood the requirements and expectations of entering the
-              Silicon Stack premises.
-            </p>
-          </div>
-        </form>
+            <div>
+              <label>Last Name</label>
+              <input
+                type="text"
+                placeholder="Enter last name"
+                v-model="formValue.lastName"
+              />
+              <span class="text-warn">{{ errors.lastName }}</span>
+            </div>
+            <div>
+              <label>Contect number</label>
+              <div class="phone__container">
+                <select v-model="formValue.selected">
+                  <option disabled value="">Select one</option>
+
+                  <option v-for="country in countriesCode" :key="country.id">
+                    {{ country.code }}
+                  </option>
+                </select>
+                <input
+                  type="text"
+                  placeholder="Enter phone number"
+                  v-model="formValue.phoneNumber"
+                />
+              </div>
+              <span class="text-warn">{{
+                errors.selected ? errors.selected : errors.phoneNumber
+              }}</span>
+            </div>
+            <div
+              class="confirm__container"
+              :class="{ active__error: errors.isChecked }"
+            >
+              <input
+                type="checkbox"
+                id="chkbxConfirm"
+                v-model="formValue.confirm"
+              />
+              <p>
+                I confirm that the above information is accurate and I have read
+                and understood the requirements and expectations of entering the
+                Silicon Stack premises.
+              </p>
+            </div>
+          </form>
+        </div>
       </div>
     </div>
-    <hr style="border-block: 1px solid #f3f5f7" class="w-95" />
+    <hr />
     <custom-buttons
       type="submit"
       value="Submit"
@@ -103,26 +113,55 @@ export default {
       ],
       country: {},
       isSubmit: false,
+      errors: {
+        firstName: "",
+        lastName: "",
+        selected: "",
+        phoneNumber: "",
+        isChecked: false,
+      },
     };
   },
-  computed: {
-    checkAnswer() {
-      let check = Object.values(this.formValue).every((item) => item);
-      return check;
-    },
-  },
+  // computed: {
+  //   checkAnswer() {
+  //     let check = Object.values(this.formValue).every((item) => item);
+  //     return check;
+  //   },
+  // },
   methods: {
     statusSubmit(val) {
-      if (this.checkAnswer === true) {
-        this.isSubmit = val;
+      this.errors = {
+        firstName: "",
+        lastName: "",
+        selected: "",
+        phoneNumber: "",
+      };
+      if (this.formValue.firstName.length < 1) {
+        this.errors.firstName = "First name is required";
+      } else if (this.formValue.lastName.length < 1) {
+        this.errors.lastName = "Last name is required";
+      } else if (this.formValue.selected.length < 1) {
+        this.errors.selected = "You need to choose a country phone code";
+      } else if (this.formValue.phoneNumber.length < 1) {
+        this.errors.phoneNumber = "Phone number is required";
+      } else if (!this.formValue.phoneNumber.match(/^[0-9]{10}$/)) {
+        this.errors.phoneNumber =
+          "Phone number just accept number only and must have 10 digits";
+      } else if (this.formValue.confirm === false) {
+        this.errors.isChecked = true;
       } else {
-        if (
-          this.formValue.phoneNumber.length > 0 &&
-          !this.formValue.phoneNumber.match(/^[0-9]{10}$/)
-        ) {
-          alert("Phone number just accept number only and must have 10 digits");
-        } else alert("You need to fill all fields with data");
+        this.isSubmit = val;
       }
+      // if (this.checkAnswer === true) {
+      //
+      // } else {
+      //   if (
+      //     this.formValue.phoneNumber.length > 0 &&
+      //     !this.formValue.phoneNumber.match(/^[0-9]{10}$/)
+      //   ) {
+      //     alert("Phone number just accept number only and must have 10 digits");
+      //   } else alert("You need to fill all fields with data");
+      // }
     },
   },
   watch: {
@@ -205,12 +244,24 @@ export default {
   justify-content: space-between;
 }
 
+.active__error {
+  border: 1px solid red;
+  box-shadow: 2px 2px 5px #e94d4d;
+}
+
 .phone__container select {
   width: 30%;
 }
 
 .phone__container input {
   width: 60%;
+}
+
+.text-warn {
+  font-size: 13px;
+  color: red;
+  font-family: "Roboto";
+  font-style: normal;
 }
 
 #chkbxConfirm {
