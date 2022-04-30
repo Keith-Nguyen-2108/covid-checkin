@@ -1,8 +1,5 @@
 <template>
-  <div
-    style="display: flex; justify-content: space-between; margin: 20px auto"
-    class="w-95"
-  >
+  <div class="w-95 button__container">
     <button type="button" class="btnBack btn w-45" @click="goPreviousPage(-1)">
       Back
     </button>
@@ -51,14 +48,29 @@ export default {
 </script>
 
 <style>
+.button__container {
+  display: flex;
+  justify-content: space-between;
+  margin-block: 16px;
+  position: static;
+  inset: 0%;
+}
+
 .btnBack {
   border: 1px solid #bec6d0;
   box-sizing: border-box;
   border-radius: 2px;
   color: #5c6c7f;
+  background: #fff;
 }
 
 .w-45 {
   width: 45%;
+}
+
+@media screen and (max-width: 550px) {
+  .button__container {
+    margin: 16px;
+  }
 }
 </style>

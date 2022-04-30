@@ -41,6 +41,9 @@
 <script>
 export default {
   name: "IntroScreen",
+  mounted() {
+    this.$store.state.completedSteps = 0;
+  },
   methods: {
     goToAnotherPage() {
       this.$router.push("/location");
@@ -68,9 +71,16 @@ export default {
 
 .w-95,
 .navbar,
-.container {
+.container,
+hr {
   width: 500px;
   margin: auto;
+}
+
+hr {
+  width: 500px;
+  margin-inline: auto;
+  border-block: 1px solid #f3f5f7;
 }
 
 .big-logo {
@@ -157,7 +167,8 @@ export default {
     margin-right: 16px;
   }
   .navbar,
-  .container {
+  .container,
+  hr {
     width: 100%;
   }
 

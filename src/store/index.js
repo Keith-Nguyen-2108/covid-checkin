@@ -5,7 +5,7 @@ export default createStore({
   state: {
     countries: [],
     country: {},
-    facility: "Can Tho",
+    facility: "",
     status: "",
     completedSteps: 0,
     userInfor: {
