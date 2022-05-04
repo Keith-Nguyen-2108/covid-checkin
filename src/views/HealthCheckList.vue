@@ -104,5 +104,6 @@ export default {
 .contact-infor p {
   /* margin-block: 0; */
   color: #475362;
+  font-family: "Roboto";
 }
 </style>

@@ -25,7 +25,7 @@
               <span class="text-warn">{{ errors.lastName }}</span>
             </div>
             <div>
-              <label>Contect number</label>
+              <label>Contact number</label>
               <div class="phone__container">
                 <select v-model="formValue.selected">
                   <option disabled value="">Select one</option>
@@ -214,16 +214,23 @@ export default {
 .contact-infor label {
   margin-left: 0px;
   color: #475362;
+  font-size: 14px;
 }
 
 .contact-infor input {
   width: 100%;
   height: 40px;
-  padding-left: 10px;
+  padding-left: 12px;
   background: #ffffff;
   box-sizing: border-box;
   border-radius: 2px;
   border: 1px solid #d1d1d1;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .contact-infor input:focus,
@@ -265,11 +272,21 @@ export default {
 }
 
 #chkbxConfirm {
-  width: 50px;
-  height: 20px;
+  width: 93px;
+  height: 24px;
+  margin-left: 0px;
+  padding: 0px;
+  outline: none;
+  border: none;
+  box-shadow: none !important;
 }
 
 .confirm__container p {
-  margin-left: 20px;
+  margin-left: 16px;
+  color: #5c6c7f;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 22px;
 }
 </style>
