@@ -105,7 +105,14 @@ export default {
   box-sizing: border-box;
   border-radius: 2px;
   color: #5c6c7f;
-  margin-block: 20px;
-  padding: 10px 50px;
+
+  padding: 8px 60px;
+  margin-top: 32px;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 </style>

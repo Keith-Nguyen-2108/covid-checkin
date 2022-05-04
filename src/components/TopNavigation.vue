@@ -3,7 +3,7 @@
     <img src="../assets/logo_company.png" alt="" class="small-logo" />
     <span>
       <p>{{ $store.state.facility }}</p>
-      <p>07/06/2020 08:00PM</p>
+      <p>{{ formatDate() }}</p>
     </span>
   </div>
 </template>
@@ -14,6 +14,25 @@ export default {
   name: "TopNavigation",
   computed: {
     ...mapState(["country"]),
+  },
+  methods: {
+    formatDate() {
+      const d = new Date();
+      let date = ("0" + d.getDate()).slice(-2);
+      let month = ("0" + (d.getMonth() + 1)).slice(-2);
+      let year = d.getFullYear();
+
+      let hours = d.getHours();
+      hours =
+        hours > 12 ? ("0" + (hours - 12)).slice(-2) : ("0" + hours).slice(-2);
+      let ampm = hours > 12 ? "PM" : "AM";
+      let minutes = d.getMinutes();
+      minutes = minutes > 10 ? minutes : ("0" + minutes).slice(-2);
+
+      return (
+        date + "/" + month + "/" + year + " " + hours + ":" + minutes + ampm
+      );
+    },
   },
   // watch: {
   //   country(newValue, oldValue) {
@@ -37,6 +56,7 @@ export default {
   padding: 10px 0px;
   align-items: center;
   background: #f9fafb;
+  border-bottom: 1px solid #f3f3f3;
 }
 
 .navbar span {
@@ -49,6 +69,7 @@ export default {
   color: #5c6c7f;
   margin-top: 0px;
   margin-bottom: 0px;
+  font-family: "Roboto";
 }
 
 .small-logo {

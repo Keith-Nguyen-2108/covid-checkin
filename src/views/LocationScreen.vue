@@ -164,8 +164,9 @@ export default {
 }
 
 .countries__item.active {
-  background: rgb(27, 27, 27);
-  color: white;
+  background: #f6f6fa;
+  box-shadow: 0px 0px 4px rgb(24 144 255 / 50%);
+  border: 1px solid #0062ff;
 }
 
 .countries__item img {
@@ -181,7 +182,7 @@ export default {
   font-weight: 400;
   font-size: 12px;
   line-height: 20px;
-
+  color: #272d35;
   margin-top: 5px;
   margin-bottom: 0px;
 }

@@ -1,7 +1,21 @@
 <template>
   <div class="container">
-    <p :class="{ 'fw-b': id }" style="margin-bottom: 1rem">{{ title }}:</p>
-    <div v-for="(i, index) in this.array" :key="i.id">
+    <p
+      :class="{ 'fw-b': id }"
+      style="margin-bottom: 16px"
+      :style="
+        name === 'city' || this.name === 'status'
+          ? lighterTextColor
+          : dakerTextColor
+      "
+    >
+      {{ title }}:
+    </p>
+    <div
+      v-for="(i, index) in this.array"
+      :key="i.id"
+      style="margin-bottom: 16px"
+    >
       <input
         type="radio"
         :id="i.name + name"
@@ -23,6 +37,11 @@ export default {
   data() {
     return {
       title: "",
+      dakerTextColor: { color: "#272D35", fontWeight: "500" },
+      lighterTextColor: {
+        color: "#475362",
+        fontWeight: "400",
+      },
     };
   },
   mounted() {
@@ -78,7 +97,8 @@ export default {
 }
 
 .container input[type="radio"] {
-  margin-bottom: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .container label {
@@ -89,5 +109,7 @@ export default {
   font-size: 16px;
   line-height: 24px;
   color: #272d35;
+  height: fit-content;
+  vertical-align: super;
 }
 </style>
