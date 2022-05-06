@@ -1,20 +1,22 @@
 <template>
-  <div class="w-95">
-    <header-bar msg="Next: Personal Information" />
-    <div class="health-checklist">
-      <p>Please answer follow questions below:</p>
-      <div v-for="(item, index) in questions" :key="item.id">
-        <custom-container
-          :array="answer"
-          :id="item.id"
-          :msg="item.desc"
-          :name="item.code"
-          :index="index"
-          @add-answer="addAnswer"
-        />
+  <div>
+    <div class="w-95">
+      <header-bar msg="Next: Personal Information" />
+      <div class="health-checklist">
+        <p>Please answer follow questions below:</p>
+        <div v-for="(item, index) in questions" :key="item.id">
+          <custom-container
+            :array="answer"
+            :id="item.id"
+            :msg="item.desc"
+            :name="item.code"
+            :index="index"
+            @add-answer="addAnswer"
+          />
+        </div>
       </div>
     </div>
-    <hr style="border-block: 1px solid #f3f5f7" class="w-95" />
+    <hr />
     <custom-buttons
       location="personal-information"
       primaryButton="Next"
@@ -68,8 +70,9 @@ export default {
       return status;
     },
     addAnswer(val, i) {
+      console.log(val);
       this.checkAnswer[i] = JSON.parse(val);
-      // console.log("checkAnswer", this.checkAnswer);
+      console.log("checkAnswer", this.checkAnswer);
       if (this.listAnswer.length === this.checkAnswer.length) {
         this.$store.state.userInfor.statusCheckin = this.checkStatus();
         // let statusCheckin = this.checkStatus();
@@ -101,5 +104,6 @@ export default {
 .contact-infor p {
   /* margin-block: 0; */
   color: #475362;
+  font-family: "Roboto";
 }
 </style>

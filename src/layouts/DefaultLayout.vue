@@ -1,9 +1,9 @@
 <template>
   <div>
     <top-navigation />
-    <main>
-      <slot />
-    </main>
+    <!-- <main> -->
+    <slot />
+    <!-- </main> -->
   </div>
 </template>
 
