@@ -1,34 +1,35 @@
 <template>
   <div class="location__screen">
     <div class="w-95">
-      <h6>To begin, please select your country and facility location</h6>
+      <h6 class="f-s-20 f-w-500">
+        To begin, please select your country and facility location
+      </h6>
       <p style="color: #475362">Select your country:</p>
       <div class="countries-container">
         <div
           class="countries__item"
           :class="item.id === indexActive && 'active'"
           v-for="item in listCountries"
-
           :key="item.id"
           @click="choose(item.id)"
         >
           <img :src="require(`../assets/${item.code}.jpg`)" alt="" />
-          <p>{{ item.name }}</p>
+          <p class="f-s-12 f-w-400 text-c-primary-2">{{ item.name }}</p>
         </div>
       </div>
     </div>
 
     <custom-container
       msg="Select the facility you are entering"
-      :arr="newCountry"
-      name="city"
+      :arrData="newCountry"
+      nameGrpRad="city"
       @update="updateFacility"
       :defaultChecked="0"
     />
     <custom-container
       msg="Select the status"
-      :arr="arrStatus"
-      name="status"
+      :arrData="arrStatus"
+      nameGrpRad="status"
       @update="updateStatus"
       :defaultChecked="0"
     />
@@ -60,7 +61,6 @@ export default {
   //   ...mapState(["countries"]),
   // },
   mounted() {
-
     // this.$store.dispatch("fetchCountry");
     this.fetchCountries();
   },
@@ -129,16 +129,7 @@ export default {
 </script>
 
 <style scoped>
-.location__screen p {
-  color: #475362;
-}
-
 .location__screen h6 {
-  font-style: normal;
-  font-weight: 500;
-
-  font-size: 20px;
-  line-height: 28px;
   word-wrap: break-word;
   color: #003180;
   margin-top: 24px;
@@ -147,7 +138,6 @@ export default {
 
 .countries-container {
   display: flex;
-  /* justify-content: space-between; */
   overflow-x: scroll;
   margin-bottom: 1em;
 }
@@ -163,7 +153,6 @@ export default {
 .countries__item {
   /* padding: 0 10px; */
   background: #f6f6fa;
-  color: #272d35;
   width: 80px;
   height: 80px;
   border-radius: 4px;
@@ -188,14 +177,6 @@ export default {
 }
 
 .countries__item p {
-
-  /* font-family: "Roboto"; */
-
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 20px;
-  color: #272d35;
   margin-top: 5px;
   margin-bottom: 0px;
 }

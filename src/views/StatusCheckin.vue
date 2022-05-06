@@ -7,21 +7,31 @@
       class="status__image"
     />
 
-    <h6>
+    <h6 class="text-c-primary-2">
       {{
         isSuccess === "Successful" ? statusArray[0].title : statusArray[1].title
       }}
     </h6>
-    <p>
+    <p class="f-s-16 f-w-400 text-c-primary-1">
       {{
         isSuccess === "Successful" ? statusArray[0].desc : statusArray[1].desc
       }}
     </p>
-    <p v-if="isSuccess !== 'Successful'" style="margin-top: 20px">
+    <p
+      v-if="isSuccess !== 'Successful'"
+      class="f-s-16 f-w-400 text-c-primary-1"
+      style="margin-top: 20px"
+    >
       Please call your Silicon Stack Line Manager or Meeting Host immediately to
       advise.
     </p>
-    <button type="button" @click="this.$router.push('/')">Done</button>
+    <button
+      class="f-s-16 f-w-400 text-c-primary-1"
+      type="button"
+      @click="this.$router.push('/')"
+    >
+      Done
+    </button>
   </div>
 </template>
 
@@ -83,20 +93,12 @@ export default {
 .status__checkin h6 {
   margin-block: 20px;
   font-size: 22px;
-  color: #272d35;
 }
 
 .status__checkin p {
   width: 250px;
   word-break: break-word;
   margin: auto;
-  color: #5c6c7f;
-
-  /* font-family: "Roboto"; */
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
 }
 
 .status__checkin button {
@@ -104,15 +106,8 @@ export default {
   border: 1px solid #bec6d0;
   box-sizing: border-box;
   border-radius: 2px;
-  color: #5c6c7f;
-
   padding: 8px 60px;
   margin-top: 32px;
-
-  /* font-family: "Roboto"; */
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+  margin-bottom: 86px;
 }
 </style>

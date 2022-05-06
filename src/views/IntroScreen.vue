@@ -9,8 +9,10 @@
       <img src="../assets/shield.png" alt="" class="shield-image" />
     </div>
     <div class="content__intro">
-      <h6>Welcome and thanks for checking in with Silicon Stack!</h6>
-      <p>
+      <h6 class="f-s-20 f-w-500 text-c-primary-2">
+        Welcome and thanks for checking in with Silicon Stack!
+      </h6>
+      <p class="f-s-14 f-w-400 text-c-primary-1">
         In light of COVID-19 there is a mandatory Check-In System in place, to
         ensure maximum safety for everyone who comes on premise. This check-in
         system is required for both visitors and employees and you will be
@@ -26,7 +28,7 @@
       >
         Get started
       </button>
-      <span>Version 1.0.1</span>
+      <span class="f-s-12 f-w-400">Version 1.0.1</span>
     </div>
   </div>
 </template>
@@ -40,20 +42,8 @@ export default {
   methods: {
     goToAnotherPage() {
       this.$router.push("/location");
-      // window.open(
-      //   "https://assets.kpmg/content/dam/kpmg/ie/pdf/2020/05/6232_COVID19_Return_to_Work_PDF_May_2020.pdf",
-      //   "_blank"
-      // );
     },
   },
-  // setup() {
-  //   const goToAnotherPage = () => {
-  //     this.$router.go("/about");
-  //   };
-  //   return {
-  //     goToAnotherPage,
-  //   };
-  // },
 };
 </script>
 
@@ -77,24 +67,12 @@ export default {
 }
 
 .content__intro h6 {
-  /* font-family: "Roboto"; */
-  font-style: normal;
-  font-weight: 500;
-  font-size: 20px;
-  line-height: 28px;
   text-align: initial;
   margin: 45px auto 0px;
-  color: #272d35;
 }
 
 .content__intro p {
-  /* font-family: "Roboto"; */
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
   text-align: initial;
-  color: #5c6c7f;
   margin-top: 12px;
   margin-bottom: 27px;
 }
@@ -112,15 +90,9 @@ export default {
 }
 
 .intro__screen span {
-  /* font-family: "Roboto"; */
-  font-style: normal;
-  font-weight: 400;
-  font-size: 12px;
-  line-height: 20px;
   color: #afb9c5;
   margin-top: 8px;
   margin-bottom: 8px;
-
   display: inline-block;
 }
 

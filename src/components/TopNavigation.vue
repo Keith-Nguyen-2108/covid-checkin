@@ -2,8 +2,8 @@
   <div class="navbar">
     <img src="../assets/logo_company.png" alt="" class="small-logo" />
     <span>
-      <p>{{ $store.state.facility }}</p>
-      <p>{{ formatDate() }}</p>
+      <p class="m-y-0 text-c-primary-1">{{ $store.state.facility }}</p>
+      <p class="m-y-0 text-c-primary-1">{{ formatDate() }}</p>
     </span>
   </div>
 </template>
@@ -66,10 +66,6 @@ export default {
 
 .navbar p {
   font-size: 12px;
-  color: #5c6c7f;
-  margin-top: 0px;
-  margin-bottom: 0px;
-  font-family: "Roboto";
 }
 
 .small-logo {
