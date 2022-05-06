@@ -202,13 +202,21 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #frmContact div:first-child {
   margin-top: 5px;
 }
 
 #frmContact div:not(:first-child) {
   margin-top: 15px;
+}
+
+.contact-infor {
+  margin-block: 30px;
+}
+
+.contact-infor p {
+  color: #475362;
 }
 
 .contact-infor label {
@@ -226,7 +234,7 @@ export default {
   border-radius: 2px;
   border: 1px solid #d1d1d1;
 
-  font-family: "Roboto";
+  /* font-family: "Roboto"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -267,7 +275,7 @@ export default {
 .text-warn {
   font-size: 13px;
   color: red;
-  font-family: "Roboto";
+  /* font-family: "Roboto"; */
   font-style: normal;
 }
 
@@ -288,5 +296,6 @@ export default {
   font-weight: 400;
   font-size: 14px;
   line-height: 22px;
+  margin-top: 0px;
 }
 </style>

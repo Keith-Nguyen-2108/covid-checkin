@@ -92,7 +92,7 @@ export default {
   margin: auto;
   color: #5c6c7f;
 
-  font-family: "Roboto";
+  /* font-family: "Roboto"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;
@@ -109,7 +109,7 @@ export default {
   padding: 8px 60px;
   margin-top: 32px;
 
-  font-family: "Roboto";
+  /* font-family: "Roboto"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

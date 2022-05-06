@@ -4,13 +4,12 @@
       <header-bar msg="Next: Personal Information" />
       <div class="health-checklist">
         <p>Please answer follow questions below:</p>
-        <div v-for="(item, index) in questions" :key="item.id">
+        <div v-for="item in questions" :key="item.id">
           <custom-container
-            :array="answer"
+            :arr="answer"
             :id="item.id"
             :msg="item.desc"
             :name="item.code"
-            :index="index"
             @add-answer="addAnswer"
           />
         </div>
@@ -94,16 +93,14 @@ export default {
 };
 </script>
 
-<style>
-.health-checklist,
-.contact-infor {
+<style scoped>
+.health-checklist {
   margin-block: 30px;
 }
 
-.health-checklist p,
-.contact-infor p {
+.health-checklist p {
   /* margin-block: 0; */
   color: #475362;
-  font-family: "Roboto";
+  /* font-family: "Roboto"; */
 }
 </style>

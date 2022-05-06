@@ -1,6 +1,11 @@
 <template>
   <div class="w-95 button__container">
-    <button type="button" class="btnBack btn w-45" @click="goPreviousPage(-1)">
+    <button
+      type="button"
+      class="btn w-45"
+      id="btnBack"
+      @click="goPreviousPage(-1)"
+    >
       Back
     </button>
     <button
@@ -47,7 +52,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .button__container {
   display: flex;
   justify-content: space-between;
@@ -56,7 +61,7 @@ export default {
   inset: 0%;
 }
 
-.btnBack {
+#btnBack {
   border: 1px solid #bec6d0;
   box-sizing: border-box;
   border-radius: 2px;

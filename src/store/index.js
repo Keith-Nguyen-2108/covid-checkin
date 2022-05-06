@@ -1,9 +1,9 @@
 import { createStore } from "vuex";
-import axios from "axios";
+// import axios from "axios";
 
 export default createStore({
   state: {
-    countries: [],
+    // countries: [],
     country: {},
     facility: "",
     status: "",
@@ -20,9 +20,9 @@ export default createStore({
     // getCurrentCountry: state => state.country
   },
   mutations: {
-    setCountries(state, countries) {
-      state.countries = countries;
-    },
+    // setCountries(state, countries) {
+    //   state.countries = countries;
+    // },
     setCountry(state, country) {
       state.country = country;
     },
@@ -41,11 +41,11 @@ export default createStore({
     // },
   },
   actions: {
-    fetchCountry({ commit }) {
-      axios
-        .get("https://ss.covid19checkins.com/backend/api/countries")
-        .then((res) => commit("setCountries", res.data));
-    },
+    // fetchCountry({ commit }) {
+    //   axios
+    //     .get("http://localhost:8080/countries")
+    //     .then((res) => commit("setCountries", res.data));
+    // },
     async postUserInformation() {
       let userInfor = Object.assign(this.state.userInfor, {
         facility: this.state.facility,

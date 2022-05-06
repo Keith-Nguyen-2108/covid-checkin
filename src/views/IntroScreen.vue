@@ -17,18 +17,11 @@
         required to check-in on each visit to the premises.
       </p>
     </div>
-    <div
-      style="
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        position: static;
-        inset: 0%;
-      "
-    >
+    <div class="btn--container">
       <button
         type="button"
-        class="btnStart btn btn-primary"
+        class="btn btn-primary"
+        id="btnStart"
         @click="goToAnotherPage()"
       >
         Get started
@@ -64,23 +57,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .intro__screen {
   text-align: center;
-}
-
-.w-95,
-.navbar,
-.container,
-hr {
-  width: 500px;
-  margin: auto;
-}
-
-hr {
-  width: 500px;
-  margin-inline: auto;
-  border-block: 1px solid #f3f5f7;
 }
 
 .big-logo {
@@ -98,7 +77,7 @@ hr {
 }
 
 .content__intro h6 {
-  font-family: "Roboto";
+  /* font-family: "Roboto"; */
   font-style: normal;
   font-weight: 500;
   font-size: 20px;
@@ -109,7 +88,7 @@ hr {
 }
 
 .content__intro p {
-  font-family: "Roboto";
+  /* font-family: "Roboto"; */
   font-style: normal;
   font-weight: 400;
   font-size: 14px;
@@ -120,35 +99,20 @@ hr {
   margin-bottom: 27px;
 }
 
-.btn {
-  border: none;
-  outline: none;
-  cursor: pointer;
-  padding-top: 8px;
-  padding-bottom: 8px;
-  font-family: "Roboto";
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
+.btn--container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: static;
+  inset: 0%;
 }
 
-.btn-primary {
-  background: #0062ff;
-  color: white;
-  border-radius: 2px;
-}
-
-.btn-primary:hover {
-  background: #0454d4;
-}
-
-.btnStart {
+#btnStart {
   width: 100%;
 }
 
 .intro__screen span {
-  font-family: "Roboto";
+  /* font-family: "Roboto"; */
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
@@ -161,17 +125,6 @@ hr {
 }
 
 @media screen and (max-width: 550px) {
-  .w-95 {
-    width: auto;
-    margin-left: 16px;
-    margin-right: 16px;
-  }
-  .navbar,
-  .container,
-  hr {
-    width: 100%;
-  }
-
   .big-logo {
     width: 170px;
     height: 59px;

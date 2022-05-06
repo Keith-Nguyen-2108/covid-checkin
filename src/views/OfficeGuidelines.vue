@@ -77,7 +77,7 @@ export default {
   margin-inline: auto;
   word-wrap: break-word;
   color: #475362;
-  font-family: "Roboto";
+  /* font-family: "Roboto"; */
   font-style: normal;
   font-weight: 400;
   font-size: 16px;

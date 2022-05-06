@@ -2,7 +2,6 @@
   <div class="container">
     <p
       :class="{ 'fw-b': id }"
-      style="margin-bottom: 16px"
       :style="
         name === 'city' || this.name === 'status'
           ? lighterTextColor
@@ -11,11 +10,7 @@
     >
       {{ title }}:
     </p>
-    <div
-      v-for="(i, index) in this.array"
-      :key="i.id"
-      style="margin-bottom: 16px"
-    >
+    <div v-for="(i, index) in this.arr" :key="i.id" style="margin-bottom: 16px">
       <input
         type="radio"
         :id="i.name + name"
@@ -33,7 +28,7 @@
 <script>
 export default {
   name: "CustomContainer",
-  props: ["msg", "array", "name", "id", "index", "defaultChecked"],
+  props: ["msg", "arr", "name", "id", "defaultChecked"],
   data() {
     return {
       title: "",
@@ -78,22 +73,12 @@ export default {
 };
 </script>
 
-<style>
-.fw-b {
-  font-weight: bold;
-}
-
-.container {
-  background: #f5f6fa;
-  padding: 10px;
-  margin-bottom: 20px;
-  box-sizing: border-box;
-}
-
+<style scoped>
 .container p {
   /* margin-top: 16px; */
   margin-block-start: 0;
   line-height: 24px;
+  margin-bottom: 16px;
 }
 
 .container input[type="radio"] {

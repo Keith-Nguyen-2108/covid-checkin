@@ -25,7 +25,7 @@ export default {
       let hours = d.getHours();
       hours =
         hours > 12 ? ("0" + (hours - 12)).slice(-2) : ("0" + hours).slice(-2);
-      let ampm = hours > 12 ? "PM" : "AM";
+      let ampm = d.getHours() > 12 ? "PM" : "AM";
       let minutes = d.getMinutes();
       minutes = minutes > 10 ? minutes : ("0" + minutes).slice(-2);
 
@@ -49,7 +49,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .navbar {
   display: flex;
   justify-content: space-between;
