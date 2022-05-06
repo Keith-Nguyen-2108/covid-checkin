@@ -111,4 +111,11 @@ hr {
     width: 100%;
   }
 }
+
+a,
+a:focus,
+a:hover {
+  color: initial;
+  text-decoration: none;
+}
 </style>

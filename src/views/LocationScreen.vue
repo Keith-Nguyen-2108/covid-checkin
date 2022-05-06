@@ -2,12 +2,13 @@
   <div class="location__screen">
     <div class="w-95">
       <h6>To begin, please select your country and facility location</h6>
-      <p>Select your country:</p>
+      <p style="color: #475362">Select your country:</p>
       <div class="countries-container">
         <div
           class="countries__item"
           :class="item.id === indexActive && 'active'"
           v-for="item in listCountries"
+
           :key="item.id"
           @click="choose(item.id)"
         >
@@ -59,6 +60,7 @@ export default {
   //   ...mapState(["countries"]),
   // },
   mounted() {
+
     // this.$store.dispatch("fetchCountry");
     this.fetchCountries();
   },
@@ -132,7 +134,6 @@ export default {
 }
 
 .location__screen h6 {
-  /* font-family: "Roboto"; */
   font-style: normal;
   font-weight: 500;
 
@@ -187,7 +188,9 @@ export default {
 }
 
 .countries__item p {
+
   /* font-family: "Roboto"; */
+
   font-style: normal;
   font-weight: 400;
   font-size: 12px;

@@ -69,6 +69,7 @@ export default {
   color: #5c6c7f;
   margin-top: 0px;
   margin-bottom: 0px;
+  font-family: "Roboto";
 }
 
 .small-logo {
