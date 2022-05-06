@@ -6,10 +6,12 @@
       <div class="countries-container">
         <div
           class="countries__item"
-          v-for="item in countries"
+          :class="item.id === indexActive && 'active'"
+          v-for="item in listCountries"
           :key="item.id"
           @click="choose(item.id)"
         >
+          <img :src="require(`../assets/${item.code}.jpg`)" alt="" />
           <p>{{ item.name }}</p>
         </div>
       </div>
@@ -17,17 +19,20 @@
 
     <custom-container
       msg="Select the facility you are entering"
-      :array="newCountries"
+      :arr="newCountry"
       name="city"
       @update="updateFacility"
+      :defaultChecked="0"
     />
     <custom-container
       msg="Select the status"
-      :array="arrStatus"
+      :arr="arrStatus"
       name="status"
       @update="updateStatus"
+      :defaultChecked="0"
     />
-    <hr style="border-block: 1px solid #f3f5f7" class="w-95" />
+    <hr />
+
     <custom-buttons
       type="button"
       location="office-guidelines"
@@ -40,7 +45,8 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+// import { mapState } from "vuex";
+import axios from "axios";
 import CustomContainer from "@/components/CustomContainer.vue";
 import CustomButtons from "../components/CustomButtons.vue";
 export default {
@@ -49,36 +55,54 @@ export default {
     CustomContainer,
     CustomButtons,
   },
-  computed: {
-    ...mapState(["countries"]),
-  },
+  // computed: {
+  //   ...mapState(["countries"]),
+  // },
   mounted() {
-    this.$store.dispatch("fetchCountry");
+    // this.$store.dispatch("fetchCountry");
+    this.fetchCountries();
   },
   data() {
     return {
-      newCountries: [],
+      listCountries: [],
+      newCountry: [],
       arrStatus: [
         { id: 1, name: "Visitor", value: "Visitor" },
         { id: 2, name: "Employee", value: "Employee" },
       ],
-      status: "",
+      status: "Visitor",
       facility: "",
       disabled: true,
+      indexActive: 1,
     };
   },
   methods: {
+    fetchCountries() {
+      axios
+        .get("/api/countries")
+        .then((res) => (this.listCountries = res.data))
+        .then(() => this.choose(1))
+        .then(() => (this.$store.state.status = this.status));
+    },
+
     choose(id) {
-      this.facility = "";
-      let arr = this.countries.filter((item) => item.id === id);
-      this.newCountries = arr[0]?.facilityList;
-      this.$store.commit("setCountry", arr[0]);
+      // console.log("hello");
+      this.indexActive = id;
+      let arr = this.listCountries.filter((item) => item.id === id);
+      if (arr.length > 0) {
+        this.newCountry = arr[0]?.facilityList;
+        this.facility = `${arr[0]?.code} - ${this.newCountry[0]?.name}`;
+        this.$store.commit("setCountry", arr[0]);
+      }
     },
     updateFacility(val) {
-      this.facility = val;
+      let facility = this.facility.split("-");
+      this.facility = `${facility[0]} - ${val}`;
+      // console.log(this.facility);
     },
     updateStatus(val) {
       this.status = val;
+      //
     },
   },
   watch: {
@@ -86,7 +110,7 @@ export default {
       handler() {
         this.$store.state.facility = this.facility;
         this.disabled =
-          this.facility.length > 0 && this.status.length > 0 ? false : true;
+          this.facility?.length > 0 && this.status?.length > 0 ? false : true;
       },
       deep: true,
     },
@@ -94,7 +118,7 @@ export default {
       handler() {
         this.$store.state.status = this.status;
         this.disabled =
-          this.facility.length > 0 && this.status.length > 0 ? false : true;
+          this.facility?.length > 0 && this.status?.length > 0 ? false : true;
       },
       deep: true,
     },
@@ -102,28 +126,27 @@ export default {
 };
 </script>
 
-<style>
-.location__screen {
-  font-family: "Roboto";
-}
-
-.location__screen h6 {
-  font-weight: bold;
-  font-size: 20px;
-  line-height: 28px;
-  word-wrap: break-word;
-  color: #003180;
-  margin-top: 20px;
-  margin-bottom: 20px;
-}
-
+<style scoped>
 .location__screen p {
   color: #475362;
 }
 
+.location__screen h6 {
+  /* font-family: "Roboto"; */
+  font-style: normal;
+  font-weight: 500;
+
+  font-size: 20px;
+  line-height: 28px;
+  word-wrap: break-word;
+  color: #003180;
+  margin-top: 24px;
+  margin-bottom: 21px;
+}
+
 .countries-container {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   overflow-x: scroll;
   margin-bottom: 1em;
 }
@@ -132,20 +155,45 @@ export default {
   display: none;
 }
 
+.countries__item:not(:last-child) {
+  margin-right: 16px;
+}
+
 .countries__item {
   /* padding: 0 10px; */
   background: #f6f6fa;
-  width: 90px;
+  color: #272d35;
+  width: 80px;
   height: 80px;
   border-radius: 4px;
   display: flex;
   justify-content: center;
   align-items: center;
   cursor: pointer;
+  flex-direction: column;
+}
+
+.countries__item.active {
+  background: #f6f6fa;
+  box-shadow: 0px 0px 4px rgb(24 144 255 / 50%);
+  border: 1px solid #0062ff;
+}
+
+.countries__item img {
+  width: 46px;
+  height: 31px;
+  border-radius: 4px;
+  object-fit: cover;
 }
 
 .countries__item p {
-  font-size: 14px;
-  font-weight: bold;
+  /* font-family: "Roboto"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #272d35;
+  margin-top: 5px;
+  margin-bottom: 0px;
 }
 </style>
