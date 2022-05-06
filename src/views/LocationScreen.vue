@@ -7,7 +7,8 @@
         <div
           class="countries__item"
           :class="item.id === indexActive && 'active'"
-          v-for="item in countries"
+          v-for="item in listCountries"
+
           :key="item.id"
           @click="choose(item.id)"
         >
@@ -19,14 +20,14 @@
 
     <custom-container
       msg="Select the facility you are entering"
-      :array="newCountries"
+      :arr="newCountry"
       name="city"
       @update="updateFacility"
       :defaultChecked="0"
     />
     <custom-container
       msg="Select the status"
-      :array="arrStatus"
+      :arr="arrStatus"
       name="status"
       @update="updateStatus"
       :defaultChecked="0"
@@ -45,7 +46,8 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+// import { mapState } from "vuex";
+import axios from "axios";
 import CustomContainer from "@/components/CustomContainer.vue";
 import CustomButtons from "../components/CustomButtons.vue";
 export default {
@@ -54,16 +56,18 @@ export default {
     CustomContainer,
     CustomButtons,
   },
-  computed: {
-    ...mapState(["countries"]),
-  },
+  // computed: {
+  //   ...mapState(["countries"]),
+  // },
   mounted() {
-    this.$store.dispatch("fetchCountry");
-    this.choose();
+
+    // this.$store.dispatch("fetchCountry");
+    this.fetchCountries();
   },
   data() {
     return {
-      newCountries: [],
+      listCountries: [],
+      newCountry: [],
       arrStatus: [
         { id: 1, name: "Visitor", value: "Visitor" },
         { id: 2, name: "Employee", value: "Employee" },
@@ -75,13 +79,21 @@ export default {
     };
   },
   methods: {
-    choose(id = 1) {
+    fetchCountries() {
+      axios
+        .get("/api/countries")
+        .then((res) => (this.listCountries = res.data))
+        .then(() => this.choose(1))
+        .then(() => (this.$store.state.status = this.status));
+    },
+
+    choose(id) {
       // console.log("hello");
       this.indexActive = id;
-      let arr = this.countries.filter((item) => item.id === id);
+      let arr = this.listCountries.filter((item) => item.id === id);
       if (arr.length > 0) {
-        this.newCountries = arr[0]?.facilityList;
-        this.facility = `${arr[0]?.code} - ${this.newCountries[0]?.name}`;
+        this.newCountry = arr[0]?.facilityList;
+        this.facility = `${arr[0]?.code} - ${this.newCountry[0]?.name}`;
         this.$store.commit("setCountry", arr[0]);
       }
     },
@@ -116,13 +128,12 @@ export default {
 };
 </script>
 
-<style>
-.location__screen {
-  font-family: "Roboto";
+<style scoped>
+.location__screen p {
+  color: #475362;
 }
 
 .location__screen h6 {
-  font-family: "Roboto";
   font-style: normal;
   font-weight: 500;
 
@@ -177,7 +188,9 @@ export default {
 }
 
 .countries__item p {
-  font-family: "Roboto";
+
+  /* font-family: "Roboto"; */
+
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
