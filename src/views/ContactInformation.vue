@@ -3,11 +3,11 @@
     <div class="w-95">
       <header-bar msg="Final Step" />
       <div class="contact-infor">
-        <p>Please fill in your contact details:</p>
+        <p class="text-c-primary-3">Please fill in your contact details:</p>
         <div class="container">
           <form id="frmContact">
             <div>
-              <label>First Name</label>
+              <label class="text-c-primary-3">First Name</label>
               <input
                 type="text"
                 placeholder="Enter first name"
@@ -16,8 +16,9 @@
               <span class="text-warn">{{ errors.firstName }}</span>
             </div>
             <div>
-              <label>Last Name</label>
+              <label class="text-c-primary-3">Last Name</label>
               <input
+                class="f-s-16 f-w-400"
                 type="text"
                 placeholder="Enter last name"
                 v-model="formValue.lastName"
@@ -25,7 +26,7 @@
               <span class="text-warn">{{ errors.lastName }}</span>
             </div>
             <div>
-              <label>Contact number</label>
+              <label class="text-c-primary-3">Contact number</label>
               <div class="phone__container">
                 <select v-model="formValue.selected">
                   <option disabled value="">Select one</option>
@@ -35,6 +36,7 @@
                   </option>
                 </select>
                 <input
+                  class="f-s-16 f-w-400"
                   type="text"
                   placeholder="Enter phone number"
                   v-model="formValue.phoneNumber"
@@ -53,7 +55,7 @@
                 id="chkbxConfirm"
                 v-model="formValue.confirm"
               />
-              <p>
+              <p class="f-s-14 f-w-400 text-c-primary-1">
                 I confirm that the above information is accurate and I have read
                 and understood the requirements and expectations of entering the
                 Silicon Stack premises.
@@ -122,12 +124,6 @@ export default {
       },
     };
   },
-  // computed: {
-  //   checkAnswer() {
-  //     let check = Object.values(this.formValue).every((item) => item);
-  //     return check;
-  //   },
-  // },
   methods: {
     statusSubmit(val) {
       this.errors = {
@@ -152,16 +148,6 @@ export default {
       } else {
         this.isSubmit = val;
       }
-      // if (this.checkAnswer === true) {
-      //
-      // } else {
-      //   if (
-      //     this.formValue.phoneNumber.length > 0 &&
-      //     !this.formValue.phoneNumber.match(/^[0-9]{10}$/)
-      //   ) {
-      //     alert("Phone number just accept number only and must have 10 digits");
-      //   } else alert("You need to fill all fields with data");
-      // }
     },
   },
   watch: {
@@ -173,27 +159,7 @@ export default {
           this.$store.state.userInfor.lastName = this.formValue?.lastName;
           this.$store.state.userInfor.phoneNumber = this.formValue?.phoneNumber;
           this.$router.push("/status-checkin");
-
-          // console.log(this.formValue?.firstName);
-          // console.log(this.formValue?.lastName);
-          // console.log(this.formValue?.phoneNumber);
-          // this.$store.commit(
-          //   "setUserInfro",
-          //   "firstName",
-          //   this.formValue?.firstName
-          // );
-          // this.$store.commit(
-          //   "setUserInfro",
-          //   "lastName",
-          //   this.formValue?.lastName
-          // );
-          // this.$store.commit(
-          //   "setUserInfro",
-          //   "phoneNumber",
-          //   this.formValue?.phoneNumber
-          // );
           this.$store.dispatch("postUserInformation");
-          // console.log(this.$store.state.userInfor);
         }
       },
       deep: true,
@@ -215,13 +181,8 @@ export default {
   margin-block: 30px;
 }
 
-.contact-infor p {
-  color: #475362;
-}
-
 .contact-infor label {
   margin-left: 0px;
-  color: #475362;
   font-size: 14px;
 }
 
@@ -233,12 +194,6 @@ export default {
   box-sizing: border-box;
   border-radius: 2px;
   border: 1px solid #d1d1d1;
-
-  /* font-family: "Roboto"; */
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
 }
 
 .contact-infor input:focus,
@@ -275,7 +230,6 @@ export default {
 .text-warn {
   font-size: 13px;
   color: red;
-  /* font-family: "Roboto"; */
   font-style: normal;
 }
 
@@ -291,11 +245,6 @@ export default {
 
 .confirm__container p {
   margin-left: 16px;
-  color: #5c6c7f;
-  font-style: normal;
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 22px;
   margin-top: 0px;
 }
 </style>

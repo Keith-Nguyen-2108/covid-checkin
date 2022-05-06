@@ -2,7 +2,7 @@
   <div class="w-95 button__container">
     <button
       type="button"
-      class="btn w-45"
+      class="btn w-45 text-c-primary-1"
       id="btnBack"
       @click="goPreviousPage(-1)"
     >
@@ -23,14 +23,31 @@
 <script>
 export default {
   name: "CustomButtons",
-  props: [
-    "location",
-    "type",
-    "primaryButton",
-    "increse",
-    "decrease",
-    "disabled",
-  ],
+  props: {
+    location: {
+      type: String,
+      default: "",
+    },
+    type: {
+      type: String,
+      default: "button",
+    },
+    primaryButton: {
+      type: String,
+      required: true,
+    },
+    increse: {
+      type: String,
+      required: true,
+    },
+    decrease: {
+      type: String,
+      required: true,
+    },
+    disabled: {
+      type: Boolean,
+    },
+  },
   methods: {
     goPreviousPage() {
       this.$router.go(-1);
@@ -65,7 +82,6 @@ export default {
   border: 1px solid #bec6d0;
   box-sizing: border-box;
   border-radius: 2px;
-  color: #5c6c7f;
   background: #fff;
 }
 

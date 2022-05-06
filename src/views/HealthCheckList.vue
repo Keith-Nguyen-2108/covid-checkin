@@ -3,13 +3,13 @@
     <div class="w-95">
       <header-bar msg="Next: Personal Information" />
       <div class="health-checklist">
-        <p>Please answer follow questions below:</p>
+        <p class="text-c-primary-3">Please answer follow questions below:</p>
         <div v-for="item in questions" :key="item.id">
           <custom-container
-            :arr="answer"
-            :id="item.id"
+            :arrData="answer"
+            :idGrpRad="item.id"
             :msg="item.desc"
-            :name="item.code"
+            :nameGrpRad="item.code"
             @add-answer="addAnswer"
           />
         </div>
@@ -74,20 +74,13 @@ export default {
       console.log("checkAnswer", this.checkAnswer);
       if (this.listAnswer.length === this.checkAnswer.length) {
         this.$store.state.userInfor.statusCheckin = this.checkStatus();
-        // let statusCheckin = this.checkStatus();
-        // this.$store.commit("setUserInfro", statusCheckin);
-        // console.log(this.$store.state.userInfor);
       }
-
-      // console.log("listAnswer", this.$store.state.userInfor.statusCheckin);
-      // console.log("store answer",this.$store.country?);
       for (let i = 0; i < this.questions.length; i++) {
         if (this.checkAnswer[i] === null || this.checkAnswer[i] === undefined) {
           this.disabled = true;
           break;
         } else this.disabled = false;
       }
-      // this.disabled = this.checkAnswer.map(item => Object.keys(item).length ===0 ? false)
     },
   },
 };
@@ -96,11 +89,5 @@ export default {
 <style scoped>
 .health-checklist {
   margin-block: 30px;
-}
-
-.health-checklist p {
-  /* margin-block: 0; */
-  color: #475362;
-  /* font-family: "Roboto"; */
 }
 </style>

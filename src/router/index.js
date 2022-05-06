@@ -11,14 +11,6 @@ const routes = [
     component: HomeView,
   },
   {
-    path: "/about",
-    name: "about",
-    meta: {
-      layout: "default",
-    },
-    component: () => import("../views/AboutView.vue"),
-  },
-  {
     path: "/location",
     name: "location",
     meta: {

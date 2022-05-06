@@ -3,7 +3,7 @@
     <div class="w-95">
       <header-bar msg="Next: Health Checklist" />
       <div style="text-align: center">
-        <p style="margin-top: 64px">
+        <p class="f-s-16 f-w-400 text-c-primary-3" style="margin-top: 64px">
           Read and acknowledge the Office Guidelines
         </p>
         <a
@@ -13,7 +13,9 @@
         >
           <div class="file__container">
             <img class="icon-pdf" src="../assets/iconPDF.png" alt="" />
-            <p style="margin-top: 8px">Tap to open PDF</p>
+            <p class="f-s-16 f-w-400 text-c-primary-1" style="margin-top: 8px">
+              Tap to open PDF
+            </p>
           </div>
         </a>
       </div>
@@ -76,11 +78,5 @@ export default {
   width: 200px;
   margin-inline: auto;
   word-wrap: break-word;
-  color: #475362;
-  /* font-family: "Roboto"; */
-  font-style: normal;
-  font-weight: 400;
-  font-size: 16px;
-  line-height: 24px;
 }
 </style>
