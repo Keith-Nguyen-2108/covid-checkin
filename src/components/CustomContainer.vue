@@ -1,13 +1,23 @@
 <template>
   <div class="container">
-    <p :class="{ 'fw-b': id }" style="margin-bottom: 1rem">{{ title }}:</p>
-    <div v-for="i in this.array" :key="i.id">
+    <p
+      :class="{ 'fw-b': id }"
+      :style="
+        name === 'city' || this.name === 'status'
+          ? lighterTextColor
+          : dakerTextColor
+      "
+    >
+      {{ title }}:
+    </p>
+    <div v-for="(i, index) in this.arr" :key="i.id" style="margin-bottom: 16px">
       <input
         type="radio"
         :id="i.name + name"
         :value="i.value ? i.value : i.name"
         :name="name"
-        @click="(e) => onClickButton(e.target.value, index)"
+        :checked="index === defaultChecked"
+        @click="(e) => onClickButton(e.target.value, id - 1)"
       />
       <label :for="i.name + name">{{ i.name }}</label
       ><br />
@@ -18,14 +28,23 @@
 <script>
 export default {
   name: "CustomContainer",
-  props: ["msg", "array", "name", "id", "index"],
+  props: ["msg", "arr", "name", "id", "defaultChecked"],
   data() {
     return {
       title: "",
+      dakerTextColor: { color: "#272D35", fontWeight: "500" },
+      lighterTextColor: {
+        color: "#475362",
+        fontWeight: "400",
+      },
     };
   },
   mounted() {
     this.title = this.id > 0 ? `${this.id}.${this.msg}` : this.msg;
+    // this.onClickButton(
+    //   this.array[0]?.value ? this.array[0]?.value : this.array[0]?.name,
+    //   0
+    // );
   },
   methods: {
     onClickButton(value, index) {
@@ -54,26 +73,17 @@ export default {
 };
 </script>
 
-<style>
-.fw-b {
-  font-weight: bold;
-}
-
-.container {
-  background: #f5f6fa;
-  padding: 10px;
-  margin-bottom: 20px;
-  box-sizing: border-box;
-}
-
+<style scoped>
 .container p {
   /* margin-top: 16px; */
   margin-block-start: 0;
   line-height: 24px;
+  margin-bottom: 16px;
 }
 
 .container input[type="radio"] {
-  margin-bottom: 20px;
+  width: 24px;
+  height: 24px;
 }
 
 .container label {
@@ -84,5 +94,7 @@ export default {
   font-size: 16px;
   line-height: 24px;
   color: #272d35;
+  height: fit-content;
+  vertical-align: super;
 }
 </style>

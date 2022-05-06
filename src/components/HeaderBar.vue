@@ -30,7 +30,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .header {
   display: flex;
   justify-content: space-between;
@@ -41,16 +41,21 @@ export default {
 
 .header__left-side span {
   color: #5c6c7f;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
   font-size: 14px;
+  line-height: 22px;
 }
 
 .header__left-side h6 {
   color: #003180;
-  font-size: 22px;
-  font-weight: bold;
   margin-block: 0;
+
   font-family: "Roboto";
-  letter-spacing: 1px;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
   line-height: 28px;
 }
 </style>

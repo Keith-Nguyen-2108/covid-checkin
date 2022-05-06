@@ -21,7 +21,7 @@
       Please call your Silicon Stack Line Manager or Meeting Host immediately to
       advise.
     </p>
-    <button type="button">Done</button>
+    <button type="button" @click="this.$router.push('/')">Done</button>
   </div>
 </template>
 
@@ -91,6 +91,12 @@ export default {
   word-break: break-word;
   margin: auto;
   color: #5c6c7f;
+
+  /* font-family: "Roboto"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 
 .status__checkin button {
@@ -99,7 +105,14 @@ export default {
   box-sizing: border-box;
   border-radius: 2px;
   color: #5c6c7f;
-  margin-block: 20px;
-  padding: 10px 50px;
+
+  padding: 8px 60px;
+  margin-top: 32px;
+
+  /* font-family: "Roboto"; */
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 24px;
 }
 </style>
